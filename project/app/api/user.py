@@ -8,15 +8,14 @@ app = FastAPI()
 class UserIn(BaseModel):
     full_name: Optional[str] = None
     email: EmailStr
-    phone: int
-    goals: List[str] = []
-
+    phone: str
+    tasks: List[str] = []
 
 class UserOut(BaseModel):
 	  full_name: Optional[str] = None
     email: EmailStr
-    phone: int
-    goals: List[str] = []
+    phone: str
+    tasks: List[str] = []
 
 
 @app.post("/user/", response_model=UserOut)
