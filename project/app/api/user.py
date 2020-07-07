@@ -1,0 +1,22 @@
+from typing import Optional
+
+from fastapi import FastAPI
+from pydantic import BaseModel, EmailStr
+
+app = FastAPI()
+
+class UserIn(BaseModel):
+    full_name: Optional[str] = None
+    email: EmailStr
+    phone: int
+
+
+class UserOut(BaseModel):
+	  full_name: Optional[str] = None
+    email: EmailStr
+    phone: int
+
+
+@app.post("/user/", response_model=UserOut)
+async def create_user(user: UserIn):
+    return user
